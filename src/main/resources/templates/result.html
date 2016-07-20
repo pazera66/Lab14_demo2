@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Display elements of a list</title>
+</head>
+<body>
+
+<h1>Result</h1>
+<p th:text="'First name: ' + ${person.firstName}" />
+<p th:text="'Last Name: ' + ${person.lastName}" />
+<p th:text="'Age:  ' + ${person.age}"/>
+<a href="/form">Submit another message</a>
+
+</body>
+</html>
