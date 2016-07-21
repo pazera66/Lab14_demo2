@@ -75,17 +75,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    @Autowired
-//    UserRepository userRepository(){
-//        return new UserRepository(passwordEncoder());
-//    }
+
 
     @Bean
     @Autowired
     DBSecurityController dbSecurityController(){
         DBSecurityController dbSecurityController = new DBSecurityController(passwordEncoder());
-        //dbSecurityController.initailise();
+        //dbSecurityController.initialise();
         return dbSecurityController;
     }
 

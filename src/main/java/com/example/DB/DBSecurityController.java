@@ -51,7 +51,7 @@ public class DBSecurityController implements UserDetailsService {
     }
 
     @PostConstruct
-    public void initailise() {
+    public void initialise() {
         roleDAO.save(new RoleDB("ADMIN"));
         roleDAO.save(new RoleDB("USER"));
         roleDAO.save(new RoleDB("SUPERUSER"));

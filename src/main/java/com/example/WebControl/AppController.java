@@ -71,5 +71,14 @@ public class AppController {
     }
 
 
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public ModelAndView admin() {
+        ModelAndView mav = new ModelAndView("adminPage");
+        return mav;
+
+
+        //return "This is ADMIN page accessible only by authenticated and authorized ADMINS";
+    }
+
 
 }

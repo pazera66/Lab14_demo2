@@ -31,10 +31,10 @@ public class RestAppController {
         return "Your login was successfull";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    String admin() {
-        return "This is ADMIN page accessible only by authenticated and authorized ADMINS";
-    }
+//    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+//    String admin() {
+//        return "This is ADMIN page accessible only by authenticated and authorized ADMINS";
+//    }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     String user() {
