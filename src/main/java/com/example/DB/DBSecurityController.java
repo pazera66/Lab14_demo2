@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by karol on 21.07.16.
  */
@@ -22,23 +26,23 @@ public class DBSecurityController implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     public DBSecurityController(PasswordEncoder passwordEncoder){
+
         this.passwordEncoder=passwordEncoder;
+//        roleDAO.save(new RoleDB("ADMIN"));
+//        roleDAO.save(new RoleDB("USER"));
+//        roleDAO.save(new RoleDB("SUPERUSER"));
+//        userdao.save(new UserDB("admin", passwordEncoder.encode("admin"), roleDAO.findByRole("ADMIN")));
     }
 
     public UserDB applySecurity(UserDB user) {
         user.setPasswordHash(passwordEncoder.encode(user.getPasswordHash()));
-        user = addUserDetails();
-        user.setGrantedAuthorities(new SimpleGrantedAuthority(String.valueOf(user.getAssignedRole())));
         return user;
     }
 
-    private UserDB addUserDetails() {
-
-        return null;
-    }
-
     UserDetails createUserDetails(UserDB user){
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPasswordHash(), true,true,true,true, user.getGrantedAuthorities());
+        List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<SimpleGrantedAuthority>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(user.getAssignedRole().getRole()));
+        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPasswordHash(), true,true,true,true, grantedAuthorities);
     }
 
     @Override
@@ -46,5 +50,11 @@ public class DBSecurityController implements UserDetailsService {
         return createUserDetails(userdao.findByLogin(s));
     }
 
-
+    @PostConstruct
+    public void initailise() {
+        roleDAO.save(new RoleDB("ADMIN"));
+        roleDAO.save(new RoleDB("USER"));
+        roleDAO.save(new RoleDB("SUPERUSER"));
+        userdao.save(new UserDB("admin", passwordEncoder.encode("admin"), roleDAO.findByRole("ADMIN")));
+    }
 }

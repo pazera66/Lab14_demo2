@@ -15,7 +15,6 @@ import javax.validation.Valid;
  * Created by karol on 20.07.16.
  */
 @Controller
-
 public class DBController {
 
 
@@ -38,7 +37,7 @@ public class DBController {
 
 
 
-    @RequestMapping(value = "/newuserdb", method = RequestMethod.GET)
+    @RequestMapping(value = "/adduserdb", method = RequestMethod.GET)
     public ModelAndView newUserForm(){
         ModelAndView mav = new ModelAndView("newUserForm2", "userFormModel", new UserFormModel());
         return mav;

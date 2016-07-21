@@ -2,7 +2,7 @@ package com.example.WebControl;
 
 import com.example.Domain.User;
 import com.example.Domain.UserFormModel;
-import com.example.Domain.UserRepository;
+//import com.example.Domain.UserRepository;
 import com.example.Model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +21,8 @@ import javax.validation.Valid;
 @Controller
 public class AppController {
 
-    @Autowired
-    UserRepository userRepository;
+//    @Autowired
+//    UserRepository userRepository;
 
 
     @RequestMapping(value = "/newPerson", method = RequestMethod.GET)
@@ -64,7 +64,7 @@ public class AppController {
             return mav;
         } else {
 
-            userRepository.addUser(userFormModel.getLogin(), userFormModel.getPassword(), userFormModel.getRole());
+            //userRepository.addUser(userFormModel.getLogin(), userFormModel.getPassword(), userFormModel.getRole());
 
             return new ModelAndView("userRegistrationSuccessfull");
         }

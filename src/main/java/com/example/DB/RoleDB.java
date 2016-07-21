@@ -31,7 +31,6 @@ public class RoleDB {
 
     RoleDB(){}
 
-
     public long getId() {
         return id;
     }

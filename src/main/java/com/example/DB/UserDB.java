@@ -33,7 +33,8 @@ public class UserDB {
     @ManyToOne
     private RoleDB assignedRole;
 
-    private List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<SimpleGrantedAuthority>();
+
+
 
 
     public UserDB (){}
@@ -79,12 +80,5 @@ public class UserDB {
         this.assignedRole = assignedRole;
     }
 
-    public List<SimpleGrantedAuthority> getGrantedAuthorities() {
 
-        return grantedAuthorities;
-    }
-
-    public void setGrantedAuthorities(SimpleGrantedAuthority authority) {
-        grantedAuthorities.add(authority);
-    }
 }

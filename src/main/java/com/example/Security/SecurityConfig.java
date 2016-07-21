@@ -1,8 +1,9 @@
 package com.example.Security;
 
+
 import com.example.DB.DBSecurityController;
 import com.example.Domain.Role;
-import com.example.Domain.UserRepository;
+//import com.example.Domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -74,23 +75,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+//    @Bean
+//    @Autowired
+//    UserRepository userRepository(){
+//        return new UserRepository(passwordEncoder());
+//    }
+
     @Bean
     @Autowired
-    UserRepository userRepository(){
-        return new UserRepository(passwordEncoder());
+    DBSecurityController dbSecurityController(){
+        DBSecurityController dbSecurityController = new DBSecurityController(passwordEncoder());
+        //dbSecurityController.initailise();
+        return dbSecurityController;
     }
+
 
     @Autowired
     @Override
     protected UserDetailsService userDetailsService(){
-        return userRepository();
+        return dbSecurityController();
     }
 
-    @Bean
-    @Autowired
-    DBSecurityController DBSecurityController(){
-        return new DBSecurityController(passwordEncoder());
-    }
 
 
 }
