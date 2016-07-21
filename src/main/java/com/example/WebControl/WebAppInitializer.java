@@ -1,7 +1,6 @@
 package com.example.WebControl;
 
 
-import com.example.DB.JPAConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -29,7 +28,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
          * Alternatively we can use {@link AnnotationConfigWebApplicationContext#scan(String...)} method.
          */
         rootContext.register(
-                JPAConfig.class,
+
 
                 WebConfiguration.class);
         /**
