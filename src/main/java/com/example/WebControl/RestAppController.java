@@ -1,10 +1,7 @@
 package com.example.WebControl;
 
 import com.example.Model.Person;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by karol on 19.07.16.
@@ -52,4 +49,9 @@ public class RestAppController {
         return "Logout successful!";
     }
 
+
+    @RequestMapping(value = "/test/{username}", method = RequestMethod.GET)
+    String testMethod(@PathVariable String username, @RequestParam int age){
+        return "This user's name is: " + username + " who is " + age + " years old!";
+    }
 }
